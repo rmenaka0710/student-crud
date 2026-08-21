@@ -14,17 +14,17 @@ pipeline {
         }
 
         stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
+    steps {
+        sh 'rm -rf node_modules'
+        sh 'npm ci'
+    }
+}
 
-        stage('Run Tests') {
-            steps {
-                sh 'npm test'
-            }
-        }
-
+stage('Run Tests') {
+    steps {
+        sh 'npm test'
+    }
+}
         stage('Build') {
             steps {
                 echo 'Application build completed successfully!'
