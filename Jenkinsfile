@@ -1,10 +1,15 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS-20'
+    }
+
     stages {
-        stage('Checkout') {
+        stage('Verify Node.js') {
             steps {
-                checkout scm
+                sh 'node --version'
+                sh 'npm --version'
             }
         }
 
@@ -22,7 +27,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                echo 'Application build completed'
+                echo 'Application build completed successfully!'
             }
         }
     }
